@@ -15,13 +15,13 @@ namespace SA45Team3a_LMS
     public partial class Login : Form
     {
         Entities context;
-        Customer cus;
-        Staffs stf;
+        Member_menu cus;
+        Staff_menu stf;
         public Login()
         {
             context = new Entities();
-            cus = new Customer();
-            stf = new Staffs();
+            cus = new Member_menu();
+            stf = new Staff_menu();
             InitializeComponent();
         }
 
@@ -36,10 +36,10 @@ namespace SA45Team3a_LMS
                 }
                 else
                 {
-                    if (textbox_PassWord.Text == context.Members.Where(x => textbox_UserID.Text == x.UserID).First().PassWords)
+                    if (textbox_PassWord.Text == context.Members.Where(x => textbox_UserID.Text == x.UserID).First().PassWord)
                     {
-                        UserID.Type = comboBox_type.Text;
-                        UserID.Userid = textbox_UserID.Text;
+                        currentuser.Type = comboBox_type.Text;
+                        currentuser.Userid = textbox_UserID.Text;
 
                         cus.ShowDialog();
                     }
@@ -57,11 +57,12 @@ namespace SA45Team3a_LMS
                 }
                 else
                 {
-                    if (textbox_PassWord.Text == context.Staffs.Where(x => textbox_UserID.Text == x.StaffID.ToString()).First().PassWords)
+                   
+                    if (textbox_PassWord.Text == context.Staffs.Where(x => textbox_UserID.Text == x.StaffID.ToString()).First().PassWord)
                     {
-                        UserID.Type = comboBox_type.Text;
-                        UserID.Userid = textbox_UserID.Text;
-
+                        currentuser.Type = comboBox_type.Text;
+                        currentuser.Userid = textbox_UserID.Text;
+                        
                         stf.ShowDialog();
                     }
                     else
@@ -82,12 +83,18 @@ namespace SA45Team3a_LMS
         {
             Search searchForm = new Search();
             searchForm.Borrow.Visible = false;
+            searchForm.Availibility.Visible = false;
             searchForm.Get.Columns[0].Visible = false;
             searchForm.ShowDialog();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
-    public class UserID
+    public class currentuser
     {
         private static string Userid_string;
 

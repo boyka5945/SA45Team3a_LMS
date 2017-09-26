@@ -21,7 +21,7 @@ namespace SA45Team3a_LMS
         }
     
         public int MemberID { get; set; }
-        public string MumberName { get; set; }
+        public string MemberName { get; set; }
         public string Addresses { get; set; }
         public string City { get; set; }
         public Nullable<int> Contact { get; set; }
@@ -30,7 +30,7 @@ namespace SA45Team3a_LMS
         public string Title { get; set; }
         public Nullable<int> BooksBorrowed { get; set; }
         public string UserID { get; set; }
-        public string PassWords { get; set; }
+        public string PassWord { get; set; }
         public string Remarks { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

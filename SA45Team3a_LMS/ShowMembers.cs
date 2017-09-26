@@ -12,47 +12,27 @@ namespace SA45Team3a_LMS
 {
     public partial class ShowMembers : Form
     {
-        Entities context = new Entities();
         public ShowMembers()
         {
             InitializeComponent();
+            Entities ctx = new Entities();
+            var q = from x in ctx.Members
+                    select new { x.MemberID, x.MemberName, x.Age, x.Email, x.BooksBorrowed};
+            dataGridViewShowMembers.DataSource = q.ToList();
         }
 
-        public DataGridView GetList
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            get
-            {
-                return dataGridView_MemberList;
-            }
+            LendBook lb = (LendBook)this.Owner;
+            lb.cboMemberID.Text = dataGridViewShowMembers.CurrentRow.Cells[0].Value.ToString();
+            lb.txtMemberName.Text = dataGridViewShowMembers.CurrentRow.Cells[1].Value.ToString();
+            lb.lblBookLent.Text = dataGridViewShowMembers.CurrentRow.Cells[4].Value.ToString();
+            this.Close();
         }
 
-        private void button_Confirm_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            using (System.Transactions.TransactionScope ts = new System.Transactions.TransactionScope())
-            {
-                for (int i = 0; i < context.Members.ToList().Count; i++)
-                {
-
-                    if (dataGridView_MemberList.Rows[i].Cells[2].Value != null)
-                        context.Members.ToList()[i].Addresses = dataGridView_MemberList.Rows[i].Cells[2].Value.ToString();
-                    if (dataGridView_MemberList.Rows[i].Cells[3].Value != null)
-                        context.Members.ToList()[i].City = dataGridView_MemberList.Rows[i].Cells[3].Value.ToString();
-                    if (dataGridView_MemberList.Rows[i].Cells[4].Value != null)
-                        context.Members.ToList()[i].Contact = Convert.ToInt32(dataGridView_MemberList.Rows[i].Cells[4].Value);
-                    if (dataGridView_MemberList.Rows[i].Cells[5].Value != null)
-                        context.Members.ToList()[i].Age = Convert.ToInt32(dataGridView_MemberList.Rows[i].Cells[5].Value);
-                    if (dataGridView_MemberList.Rows[i].Cells[6].Value != null)
-                        context.Members.ToList()[i].Email = dataGridView_MemberList.Rows[i].Cells[6].Value.ToString();
-                    if (dataGridView_MemberList.Rows[i].Cells[8].Value != null)
-                        context.Members.ToList()[i].BooksBorrowed = Convert.ToInt32(dataGridView_MemberList.Rows[i].Cells[8].Value);
-                    if (dataGridView_MemberList.Rows[i].Cells[11].Value != null)
-                        context.Members.ToList()[i].Remarks = dataGridView_MemberList.Rows[i].Cells[11].Value.ToString();
-
-                }
-
-                context.SaveChanges();
-                ts.Complete();
-            }
+            this.Close();
         }
     }
 }

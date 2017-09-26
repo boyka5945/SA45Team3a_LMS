@@ -27,7 +27,7 @@ namespace SA45Team3a_LMS
                 Member m = new Member();
 
                 m.UserID = textBox_UserID.Text;
-                m.PassWords = textBox_PassWord.Text;
+                m.PassWord = textBox_PassWord.Text;
                 m.MemberID = 1000 + count;
                 m.Title = textBox_Title.Text;
                 m.Contact = Convert.ToInt32(textBox_Contact.Text);

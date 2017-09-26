@@ -21,9 +21,9 @@ namespace SA45Team3a_LMS
         public Nullable<System.DateTime> DueDate { get; set; }
         public Nullable<System.DateTime> DateReturned { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public string LoadStatus { get; set; }
+        public string LoanStatus { get; set; }
         public Nullable<decimal> OverdueFines { get; set; }
-        public string Remark { get; set; }
+        public string Remarks { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Member Member { get; set; }

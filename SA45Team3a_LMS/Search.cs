@@ -13,10 +13,10 @@ namespace SA45Team3a_LMS
     public partial class Search : Form
     {
         Entities context;
-        Borrow bro;
+        LendBook bro;
         public Search()
         {
-            bro = new SA45Team3a_LMS.Borrow();
+            bro = new LendBook();
             context = new Entities();
             InitializeComponent();
         }
@@ -47,7 +47,14 @@ namespace SA45Team3a_LMS
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView_Books.DataSource = context.Books.Where(x => x.Category == comboBox_Catagory.Text).ToList();
+            if (comboBox_Catagory.Text == "")
+            {
+                dataGridView_Books.DataSource = context.Books.ToList();
+            }
+            else
+            {
+                dataGridView_Books.DataSource = context.Books.Where(x => x.Category == comboBox_Catagory.Text).ToList();
+            }
         }
 
 
@@ -75,9 +82,18 @@ namespace SA45Team3a_LMS
 
         private void Search_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the '_SA45_team_3a_DataSet.Books' table. You can move, or remove it, as needed.
-            this.booksTableAdapter.Fill(this._SA45_team_3a_DataSet.Books);
+            var q = from x in context.Books group x by x.Category into s select new { s.Key };
+            List<string> l = new List<string>();
+
+            for (int i = 0; i < q.ToList().Count; i++)
+            {
+                l.Add(q.ToList().ElementAt(i).ToString().Substring(8, q.ToList().ElementAt(i).ToString().Length - 10));
+            }
+            l.Add("");
+            // TODO: This line of code loads data into the 'sA45Team3a.Books' table. You can move, or remove it, as needed.
+            comboBox_Catagory.DataSource = l;
             comboBox_Catagory.Text = "";
+            dataGridView_Books.DataSource = "";
         }
 
         private void button_Borrow_Click(object sender, EventArgs e)
@@ -86,11 +102,11 @@ namespace SA45Team3a_LMS
             {
                 if (dataGridView_Books.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
                 {
-                    
-                    bro.ISBN.Text = dataGridView_Books.Rows[i].Cells["ISBN"].Value.ToString();
-                    bro.Author.Text = dataGridView_Books.Rows[i].Cells["Author"].Value.ToString();
-                    bro.Title.Text = dataGridView_Books.Rows[i].Cells["Title"].Value.ToString();
-                    bro.Qty.Text = dataGridView_Books.Rows[i].Cells["TotalQty"].Value.ToString();
+
+                    bro.cboISBN.Text = dataGridView_Books.Rows[i].Cells["ISBN"].Value.ToString();
+                    //bro.txtTitle.Text = dataGridView_Books.Rows[i].Cells["Author"].Value.ToString();
+                    bro.txtTitle.Text = dataGridView_Books.Rows[i].Cells["Title"].Value.ToString();
+                    bro.lblBookRemained.Text =(Convert.ToInt32(dataGridView_Books.Rows[i].Cells["TotalQty"].Value) - Convert.ToInt32(dataGridView_Books.Rows[i].Cells["TotalOnLoan"].Value)).ToString();
                     bro.ShowDialog();
                 }
             }
@@ -104,6 +120,30 @@ namespace SA45Team3a_LMS
         private void button_CheckStatus_Click(object sender, EventArgs e)
         {
 
+            for (int i = 0; i < dataGridView_Books.RowCount; i++)
+            {
+                if (dataGridView_Books.Rows[i].Cells[0].EditedFormattedValue.ToString() == "True")
+                {
+                    if(Convert.ToInt32(dataGridView_Books.Rows[i].Cells["TotalQty"].Value) - Convert.ToInt32(dataGridView_Books.Rows[i].Cells["TotalOnLoan"].Value) > 0)
+                    {
+                        MessageBox.Show("Availible");
+                    }
+                    else
+                    {
+                        string temp = dataGridView_Books.Rows[i].Cells["ISBN"].Value.ToString();
+                        DateTime time = context.LoanRecords.Where(x => x.ISBN == temp).First().DueDate.Value;
+                        foreach (LoanRecord x in context.LoanRecords.Where(x => x.ISBN == temp).ToList())
+                        {
+                            if (x.DueDate.Value.CompareTo(time) < 0)
+                            {
+                                time = x.DueDate.Value;
+                            }
+                        }
+                        MessageBox.Show(time + " Can Availible.");
+                    }
+                }
+            }
         }
     }
 }
+

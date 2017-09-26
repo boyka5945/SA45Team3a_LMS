@@ -5,12 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7fae998964e44e2fa5606a116751970c" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Book" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.LoanRecord" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Member" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Staff" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_LoanRecord_Books" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_LoanRecord_Members" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Book" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="Model.LoanRecord" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Model.Member" Width="1.5" PointX="0.75" PointY="4.875" />
+        <EntityTypeShape EntityType="Model.Staff" Width="1.5" PointX="5.75" PointY="0.75" />
+        <AssociationConnector Association="Model.FK_LoanRecord_Books" />
+        <AssociationConnector Association="Model.FK_LoanRecord_Members" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -28,7 +28,7 @@ namespace SA45Team3a_LMS
         public Nullable<System.DateTime> DatePublish { get; set; }
         public Nullable<int> TotalQty { get; set; }
         public Nullable<int> TotalOnLoan { get; set; }
-        public string Remark { get; set; }
+        public string Remarks { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LoanRecord> LoanRecords { get; set; }

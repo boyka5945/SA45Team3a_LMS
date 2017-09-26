@@ -16,7 +16,7 @@ namespace SA45Team3a_LMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Search());
+            Application.Run(new Login());
         }
     }
 }

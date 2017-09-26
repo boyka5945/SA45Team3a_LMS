@@ -16,7 +16,7 @@ namespace SA45Team3a_LMS
     {
         public int StaffID { get; set; }
         public string StaffName { get; set; }
-        public string PassWords { get; set; }
-        public string Remark { get; set; }
+        public string PassWord { get; set; }
+        public string Remarks { get; set; }
     }
 }

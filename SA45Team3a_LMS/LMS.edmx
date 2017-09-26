@@ -17,7 +17,7 @@
           <Property Name="DatePublish" Type="datetime" />
           <Property Name="TotalQty" Type="int" />
           <Property Name="TotalOnLoan" Type="int" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LoanRecord">
           <Key>
@@ -30,16 +30,16 @@
           <Property Name="DueDate" Type="datetime" />
           <Property Name="DateReturned" Type="datetime" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="LoadStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoanStatus" Type="nvarchar" MaxLength="50" />
           <Property Name="OverdueFines" Type="decimal" Precision="18" Scale="0" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Members">
           <Key>
             <PropertyRef Name="MemberID" />
           </Key>
           <Property Name="MemberID" Type="int" Nullable="false" />
-          <Property Name="MumberName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MemberName" Type="nvarchar" MaxLength="50" />
           <Property Name="Addresses" Type="nvarchar" MaxLength="50" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
           <Property Name="Contact" Type="int" />
@@ -48,7 +48,7 @@
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="BooksBorrowed" Type="int" />
           <Property Name="UserID" Type="nvarchar" MaxLength="50" />
-          <Property Name="PassWords" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
           <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Staff">
@@ -57,8 +57,8 @@
           </Key>
           <Property Name="StaffID" Type="int" Nullable="false" />
           <Property Name="StaffName" Type="nvarchar" MaxLength="50" />
-          <Property Name="PassWords" Type="nvarchar" MaxLength="50" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+          <Property Name="PassWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_LoanRecord_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
@@ -102,11 +102,25 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Model.Book" />
+          <EntitySet Name="LoanRecords" EntityType="Model.LoanRecord" />
+          <EntitySet Name="Members" EntityType="Model.Member" />
+          <EntitySet Name="Staffs" EntityType="Model.Staff" />
+          <AssociationSet Name="FK_LoanRecord_Books" Association="Model.FK_LoanRecord_Books">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="LoanRecord" EntitySet="LoanRecords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoanRecord_Members" Association="Model.FK_LoanRecord_Members">
+            <End Role="Member" EntitySet="Members" />
+            <End Role="LoanRecord" EntitySet="LoanRecords" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Book">
           <Key>
             <PropertyRef Name="ISBN" />
           </Key>
-          <Property Name="ISBN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ISBN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PublisherName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -114,8 +128,8 @@
           <Property Name="DatePublish" Type="DateTime" Precision="3" />
           <Property Name="TotalQty" Type="Int32" />
           <Property Name="TotalOnLoan" Type="Int32" />
-          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LoanRecords" Relationship="Self.FK_LoanRecord_Books" FromRole="Books" ToRole="LoanRecord" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoanRecords" Relationship="Model.FK_LoanRecord_Books" FromRole="Book" ToRole="LoanRecord" />
         </EntityType>
         <EntityType Name="LoanRecord">
           <Key>
@@ -128,18 +142,18 @@
           <Property Name="DueDate" Type="DateTime" Precision="3" />
           <Property Name="DateReturned" Type="DateTime" Precision="3" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="LoadStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoanStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OverdueFines" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Book" Relationship="Model.FK_LoanRecord_Books" FromRole="LoanRecord" ToRole="Books" a:GetterAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
-          <NavigationProperty Name="Member" Relationship="Self.FK_LoanRecord_Members" FromRole="LoanRecord" ToRole="Members" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Book" Relationship="Model.FK_LoanRecord_Books" FromRole="LoanRecord" ToRole="Book" />
+          <NavigationProperty Name="Member" Relationship="Model.FK_LoanRecord_Members" FromRole="LoanRecord" ToRole="Member" />
         </EntityType>
         <EntityType Name="Member">
           <Key>
             <PropertyRef Name="MemberID" />
           </Key>
           <Property Name="MemberID" Type="Int32" Nullable="false" />
-          <Property Name="MumberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Addresses" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Contact" Type="Int32" />
@@ -148,9 +162,9 @@
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BooksBorrowed" Type="Int32" />
           <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LoanRecords" Relationship="Self.FK_LoanRecord_Members" FromRole="Members" ToRole="LoanRecord" />
+          <NavigationProperty Name="LoanRecords" Relationship="Model.FK_LoanRecord_Members" FromRole="Member" ToRole="LoanRecord" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -158,14 +172,14 @@
           </Key>
           <Property Name="StaffID" Type="Int32" Nullable="false" />
           <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PassWords" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_LoanRecord_Books">
-          <End Role="Books" Type="Self.Book" Multiplicity="0..1" />
-          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <End Type="Model.Book" Role="Book" Multiplicity="0..1" />
+          <End Type="Model.LoanRecord" Role="LoanRecord" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Books">
+            <Principal Role="Book">
               <PropertyRef Name="ISBN" />
             </Principal>
             <Dependent Role="LoanRecord">
@@ -174,10 +188,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LoanRecord_Members">
-          <End Role="Members" Type="Self.Member" Multiplicity="0..1" />
-          <End Role="LoanRecord" Type="Self.LoanRecord" Multiplicity="*" />
+          <End Type="Model.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="Model.LoanRecord" Role="LoanRecord" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Members">
+            <Principal Role="Member">
               <PropertyRef Name="MemberID" />
             </Principal>
             <Dependent Role="LoanRecord">
@@ -185,20 +199,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Books" EntityType="Self.Book" />
-          <EntitySet Name="LoanRecords" EntityType="Self.LoanRecord" />
-          <EntitySet Name="Members" EntityType="Self.Member" />
-          <EntitySet Name="Staffs" EntityType="Self.Staff" />
-          <AssociationSet Name="FK_LoanRecord_Books" Association="Self.FK_LoanRecord_Books">
-            <End Role="Books" EntitySet="Books" />
-            <End Role="LoanRecord" EntitySet="LoanRecords" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LoanRecord_Members" Association="Self.FK_LoanRecord_Members">
-            <End Role="Members" EntitySet="Members" />
-            <End Role="LoanRecord" EntitySet="LoanRecords" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -208,59 +208,59 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="Model.Book">
               <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Author" ColumnName="Author" />
-                <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="DatePublish" ColumnName="DatePublish" />
-                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="TotalOnLoan" ColumnName="TotalOnLoan" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="TotalQty" ColumnName="TotalQty" />
+                <ScalarProperty Name="DatePublish" ColumnName="DatePublish" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="PublisherName" ColumnName="PublisherName" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoanRecords">
             <EntityTypeMapping TypeName="Model.LoanRecord">
               <MappingFragment StoreEntitySet="LoanRecord">
-                <ScalarProperty Name="LoanNumber" ColumnName="LoanNumber" />
-                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="DateBorrowed" ColumnName="DateBorrowed" />
-                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
-                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="LoadStatus" ColumnName="LoadStatus" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
                 <ScalarProperty Name="OverdueFines" ColumnName="OverdueFines" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LoanStatus" ColumnName="LoanStatus" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="DateBorrowed" ColumnName="DateBorrowed" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="LoanNumber" ColumnName="LoanNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Members">
             <EntityTypeMapping TypeName="Model.Member">
               <MappingFragment StoreEntitySet="Members">
-                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
-                <ScalarProperty Name="MumberName" ColumnName="MumberName" />
-                <ScalarProperty Name="Addresses" ColumnName="Addresses" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="BooksBorrowed" ColumnName="BooksBorrowed" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="PassWords" ColumnName="PassWords" />
                 <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BooksBorrowed" ColumnName="BooksBorrowed" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Addresses" ColumnName="Addresses" />
+                <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Staffs">
             <EntityTypeMapping TypeName="Model.Staff">
               <MappingFragment StoreEntitySet="Staff">
-                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
                 <ScalarProperty Name="StaffName" ColumnName="StaffName" />
-                <ScalarProperty Name="PassWords" ColumnName="PassWords" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
