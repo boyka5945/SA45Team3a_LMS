@@ -33,7 +33,17 @@ namespace SA45Team3a_LMS
         private void btnSearch_Click(object sender, EventArgs e)
         {
             Entities ctx = new Entities();
-            if (cboMemberID.Text == "")
+            if (cboMemberID.Text == "--Select ID--")
+            {
+                MessageBox.Show("Select Member ID.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.RightAlign,
+                false);
+            }
+            else if (cboMemberID.Text == "")
             {
                 MessageBox.Show("It is invalid!!",
                 "Error",

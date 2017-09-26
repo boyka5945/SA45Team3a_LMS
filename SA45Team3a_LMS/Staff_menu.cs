@@ -53,7 +53,6 @@ namespace SA45Team3a_LMS
         private void button4_Click(object sender, EventArgs e)
         {
             Search search = new Search();
-            search.Get.Columns[0].Visible = true;
             search.Borrow.Visible = true;
             search.Availibility.Visible = false;
             search.Show();
@@ -69,6 +68,11 @@ namespace SA45Team3a_LMS
         {
             LendBook lb = new LendBook();
             lb.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

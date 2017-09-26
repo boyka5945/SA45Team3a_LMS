@@ -22,6 +22,7 @@ namespace SA45Team3a_LMS
         private void Member_menu_Load(object sender, EventArgs e)
         {
             string name = context.Members.Where(x => x.UserID == currentuser.Userid).First().MemberName.ToString();
+
             label2.Text = "Welcome " + name;
         }
 
@@ -50,8 +51,17 @@ namespace SA45Team3a_LMS
             Search search = new Search();
             search.Borrow.Visible = false;
             search.Availibility.Visible = true;
-            search.Get.Columns[0].Visible = true;
             search.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView_Books = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label_Catagory = new System.Windows.Forms.Label();
             this.comboBox_Catagory = new System.Windows.Forms.ComboBox();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -50,38 +49,36 @@
             // 
             // dataGridView_Books
             // 
+            this.dataGridView_Books.AllowUserToAddRows = false;
+            this.dataGridView_Books.AllowUserToDeleteRows = false;
             this.dataGridView_Books.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Books.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
             this.dataGridView_Books.Location = new System.Drawing.Point(12, 68);
             this.dataGridView_Books.Name = "dataGridView_Books";
+            this.dataGridView_Books.ReadOnly = true;
             this.dataGridView_Books.RowTemplate.Height = 23;
             this.dataGridView_Books.Size = new System.Drawing.Size(605, 282);
             this.dataGridView_Books.TabIndex = 0;
             this.dataGridView_Books.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Books_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
             // label_Catagory
             // 
             this.label_Catagory.AutoSize = true;
+            this.label_Catagory.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_Catagory.Location = new System.Drawing.Point(13, 28);
             this.label_Catagory.Name = "label_Catagory";
-            this.label_Catagory.Size = new System.Drawing.Size(53, 12);
+            this.label_Catagory.Size = new System.Drawing.Size(63, 20);
             this.label_Catagory.TabIndex = 1;
-            this.label_Catagory.Text = "Catagory";
+            this.label_Catagory.Text = "Category";
             // 
             // comboBox_Catagory
             // 
+            this.comboBox_Catagory.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox_Catagory.FormattingEnabled = true;
             this.comboBox_Catagory.Items.AddRange(new object[] {
             "NULL"});
-            this.comboBox_Catagory.Location = new System.Drawing.Point(72, 25);
+            this.comboBox_Catagory.Location = new System.Drawing.Point(82, 25);
             this.comboBox_Catagory.Name = "comboBox_Catagory";
-            this.comboBox_Catagory.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_Catagory.Size = new System.Drawing.Size(121, 28);
             this.comboBox_Catagory.TabIndex = 2;
             this.comboBox_Catagory.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -103,18 +100,20 @@
             // label_KeyWord
             // 
             this.label_KeyWord.AutoSize = true;
-            this.label_KeyWord.Location = new System.Drawing.Point(251, 28);
+            this.label_KeyWord.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_KeyWord.Location = new System.Drawing.Point(254, 28);
             this.label_KeyWord.Name = "label_KeyWord";
-            this.label_KeyWord.Size = new System.Drawing.Size(47, 12);
+            this.label_KeyWord.Size = new System.Drawing.Size(62, 20);
             this.label_KeyWord.TabIndex = 3;
-            this.label_KeyWord.Text = "KeyWord";
+            this.label_KeyWord.Text = "Keyword";
             // 
             // textBox_KeyWord
             // 
+            this.textBox_KeyWord.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_KeyWord.ForeColor = System.Drawing.Color.LightGray;
-            this.textBox_KeyWord.Location = new System.Drawing.Point(304, 24);
+            this.textBox_KeyWord.Location = new System.Drawing.Point(322, 25);
             this.textBox_KeyWord.Name = "textBox_KeyWord";
-            this.textBox_KeyWord.Size = new System.Drawing.Size(237, 21);
+            this.textBox_KeyWord.Size = new System.Drawing.Size(237, 26);
             this.textBox_KeyWord.TabIndex = 4;
             this.textBox_KeyWord.Text = "bookname/author/publishername/ISBN";
             this.textBox_KeyWord.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ShowBooks);
@@ -122,9 +121,11 @@
             // 
             // button_Search
             // 
+            this.button_Search.AutoSize = true;
+            this.button_Search.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Search.Location = new System.Drawing.Point(563, 23);
             this.button_Search.Name = "button_Search";
-            this.button_Search.Size = new System.Drawing.Size(54, 23);
+            this.button_Search.Size = new System.Drawing.Size(61, 30);
             this.button_Search.TabIndex = 5;
             this.button_Search.Text = "Search";
             this.button_Search.UseVisualStyleBackColor = true;
@@ -132,9 +133,10 @@
             // 
             // button_Borrow
             // 
-            this.button_Borrow.Location = new System.Drawing.Point(223, 356);
+            this.button_Borrow.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Borrow.Location = new System.Drawing.Point(258, 356);
             this.button_Borrow.Name = "button_Borrow";
-            this.button_Borrow.Size = new System.Drawing.Size(75, 23);
+            this.button_Borrow.Size = new System.Drawing.Size(129, 36);
             this.button_Borrow.TabIndex = 6;
             this.button_Borrow.Text = "Borrow";
             this.button_Borrow.UseVisualStyleBackColor = true;
@@ -142,7 +144,8 @@
             // 
             // button_Availability
             // 
-            this.button_Availability.Location = new System.Drawing.Point(330, 356);
+            this.button_Availability.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Availability.Location = new System.Drawing.Point(258, 356);
             this.button_Availability.Name = "button_Availability";
             this.button_Availability.Size = new System.Drawing.Size(129, 36);
             this.button_Availability.TabIndex = 7;
@@ -194,6 +197,5 @@
         private SA45Team3a sA45Team3a;
         private System.Windows.Forms.BindingSource booksBindingSource;
         private SA45Team3aTableAdapters.BooksTableAdapter booksTableAdapter;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
     }
 }

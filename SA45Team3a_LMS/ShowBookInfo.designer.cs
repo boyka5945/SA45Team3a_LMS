@@ -36,10 +36,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(331, 280);
+            this.btnCancel.AutoSize = true;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(331, 258);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(145, 23);
+            this.btnCancel.Size = new System.Drawing.Size(145, 30);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -47,10 +48,11 @@
             // 
             // btnOK
             // 
-            this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(105, 280);
+            this.btnOK.AutoSize = true;
+            this.btnOK.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOK.Location = new System.Drawing.Point(105, 258);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(145, 23);
+            this.btnOK.Size = new System.Drawing.Size(145, 30);
             this.btnOK.TabIndex = 7;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
@@ -59,17 +61,17 @@
             // dataGridViewShowBookInfo
             // 
             this.dataGridViewShowBookInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewShowBookInfo.Location = new System.Drawing.Point(12, 12);
+            this.dataGridViewShowBookInfo.Location = new System.Drawing.Point(12, 11);
             this.dataGridViewShowBookInfo.Name = "dataGridViewShowBookInfo";
             this.dataGridViewShowBookInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewShowBookInfo.Size = new System.Drawing.Size(593, 236);
+            this.dataGridViewShowBookInfo.Size = new System.Drawing.Size(593, 218);
             this.dataGridViewShowBookInfo.TabIndex = 6;
             // 
             // ShowBookInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 337);
+            this.ClientSize = new System.Drawing.Size(617, 311);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.dataGridViewShowBookInfo);
@@ -77,6 +79,7 @@
             this.Text = "ShowBookInfo";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewShowBookInfo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

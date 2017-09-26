@@ -52,109 +52,117 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(23, 54);
+            this.groupBox2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(23, 39);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(277, 153);
+            this.groupBox2.Size = new System.Drawing.Size(277, 148);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "CONTACT INFORMATION";
+            this.groupBox2.Text = "Contact Information";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(133, 127);
+            this.textBox5.Location = new System.Drawing.Point(133, 117);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.Size = new System.Drawing.Size(100, 26);
             this.textBox5.TabIndex = 7;
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(133, 98);
+            this.textBox4.Location = new System.Drawing.Point(133, 87);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.Size = new System.Drawing.Size(100, 26);
             this.textBox4.TabIndex = 6;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(133, 64);
+            this.textBox3.Location = new System.Drawing.Point(133, 57);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.Size = new System.Drawing.Size(100, 26);
             this.textBox3.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 30);
+            this.textBox2.Location = new System.Drawing.Point(133, 28);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.Size = new System.Drawing.Size(100, 26);
             this.textBox2.TabIndex = 4;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 130);
+            this.label8.Location = new System.Drawing.Point(6, 120);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(53, 13);
+            this.label8.Size = new System.Drawing.Size(97, 20);
             this.label8.TabIndex = 3;
-            this.label8.Text = "EMAIL ID";
+            this.label8.Text = "Email Address";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 98);
+            this.label7.Location = new System.Drawing.Point(6, 90);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(108, 13);
+            this.label7.Size = new System.Drawing.Size(104, 20);
             this.label7.TabIndex = 2;
-            this.label7.Text = "CONTACT NUMBER";
+            this.label7.Text = "Contact Number";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 67);
+            this.label6.Location = new System.Drawing.Point(6, 62);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(31, 13);
+            this.label6.Size = new System.Drawing.Size(31, 20);
             this.label6.TabIndex = 1;
-            this.label6.Text = "CITY";
+            this.label6.Text = "City";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 37);
+            this.label5.Location = new System.Drawing.Point(6, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.Size = new System.Drawing.Size(60, 20);
             this.label5.TabIndex = 0;
-            this.label5.Text = "ADDRESS";
+            this.label5.Text = "Address";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(62, 236);
+            this.button1.AutoSize = true;
+            this.button1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(62, 207);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(75, 30);
             this.button1.TabIndex = 6;
-            this.button1.Text = "SAVE";
+            this.button1.Text = "Save";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(181, 236);
+            this.button2.AutoSize = true;
+            this.button2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(181, 207);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 30);
             this.button2.TabIndex = 7;
-            this.button2.Text = "CANCEL";
+            this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form3
+            // EditProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 280);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(327, 258);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "EditProfile";
+            this.Text = "Edit Profile";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

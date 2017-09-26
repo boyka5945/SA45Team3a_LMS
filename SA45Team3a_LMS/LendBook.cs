@@ -41,10 +41,17 @@ namespace SA45Team3a_LMS
         private void btnSearchMember_Click(object sender, EventArgs e)
         {
             Entities ctx = new Entities();
-            int mID = Convert.ToInt32(cboMemberID.Text);
-
-            var q = from x in ctx.Members where x.MemberID == mID select x;
-            if (!q.Any())
+            if (cboMemberID.Text == "--Select ID--")
+            {
+                MessageBox.Show("Select Member ID.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.RightAlign,
+                false);
+            }
+            else if (cboMemberID.Text == "")
             {
                 MessageBox.Show("It is invalid!!",
                 "Error",
@@ -56,9 +63,24 @@ namespace SA45Team3a_LMS
             }
             else
             {
-                Member m = q.First();
-                txtMemberName.Text = m.MemberName;
-                lblBookLent.Text = m.BooksBorrowed.ToString();
+                int mID = Convert.ToInt32(cboMemberID.Text);
+                var q = from x in ctx.Members where x.MemberID == mID select x;
+                if (!q.Any())
+                {
+                    MessageBox.Show("It is invalid!!",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RightAlign,
+                    false);
+                }
+                else
+                {
+                    Member m = q.First();
+                    txtMemberName.Text = m.MemberName;
+                    lblBookLent.Text = m.BooksBorrowed.ToString();
+                }
             }
         }
 
@@ -67,9 +89,9 @@ namespace SA45Team3a_LMS
             Entities ctx = new Entities();
 
             var q = from x in ctx.Books where x.ISBN == cboISBN.Text select x;
-            if (!q.Any())
+            if (cboISBN.Text == "--Select ISBN--")
             {
-                MessageBox.Show("It is invalid!!",
+                MessageBox.Show("Select ISBN.",
                 "Error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Error,
@@ -79,11 +101,25 @@ namespace SA45Team3a_LMS
             }
             else
             {
-                Book b = q.First();
-                txtTitle.Text = b.Title;
-                int remained = Convert.ToInt32(b.TotalQty) - Convert.ToInt32(b.TotalOnLoan);
-                lblBookRemained.Text = remained.ToString();
+                if (!q.Any())
+                {
+                    MessageBox.Show("It is invalid!!",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RightAlign,
+                    false);
+                }
+                else
+                {
+                    Book b = q.First();
+                    txtTitle.Text = b.Title;
+                    int remained = Convert.ToInt32(b.TotalQty) - Convert.ToInt32(b.TotalOnLoan);
+                    lblBookRemained.Text = remained.ToString();
+                }
             }
+
         }
 
         private void dateTimePicker1_Leave(object sender, EventArgs e)

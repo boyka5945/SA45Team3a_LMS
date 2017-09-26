@@ -73,5 +73,10 @@ namespace SA45Team3a_LMS
             context.SaveChanges();
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

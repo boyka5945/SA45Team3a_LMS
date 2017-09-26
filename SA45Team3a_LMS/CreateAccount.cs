@@ -29,8 +29,9 @@ namespace SA45Team3a_LMS
                 m.UserID = textBox_UserID.Text;
                 m.PassWord = textBox_PassWord.Text;
                 m.MemberID = 1000 + count;
-                m.Title = textBox_Title.Text;
+                m.Title = comboBox1.Text;
                 m.Contact = Convert.ToInt32(textBox_Contact.Text);
+                m.Email = textBox_Email.Text;
 
                 context.Members.Add(m);
                 context.SaveChanges();
@@ -40,6 +41,11 @@ namespace SA45Team3a_LMS
         }
 
         private void CreateAccount_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

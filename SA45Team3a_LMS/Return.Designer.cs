@@ -30,11 +30,6 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.search = new System.Windows.Forms.Button();
-            this.check_in = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +38,11 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.search = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.check_in = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -55,6 +55,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -68,8 +69,9 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.check_in);
             this.splitContainer1.Panel2.Controls.Add(this.dateTimePicker1);
-            this.splitContainer1.Size = new System.Drawing.Size(1113, 501);
-            this.splitContainer1.SplitterDistance = 824;
+            this.splitContainer1.Size = new System.Drawing.Size(742, 301);
+            this.splitContainer1.SplitterDistance = 549;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 3;
             // 
             // dataGridView1
@@ -87,58 +89,13 @@
             this.Column7});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(824, 501);
+            this.dataGridView1.Size = new System.Drawing.Size(549, 301);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 265);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 20);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Date Returned";
-            // 
-            // search
-            // 
-            this.search.AutoSize = true;
-            this.search.Location = new System.Drawing.Point(17, 51);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(83, 30);
-            this.search.TabIndex = 11;
-            this.search.Text = "Search";
-            this.search.UseVisualStyleBackColor = true;
-            this.search.Click += new System.EventHandler(this.search_Click);
-            // 
-            // check_in
-            // 
-            this.check_in.AutoSize = true;
-            this.check_in.Location = new System.Drawing.Point(25, 320);
-            this.check_in.Name = "check_in";
-            this.check_in.Size = new System.Drawing.Size(83, 30);
-            this.check_in.TabIndex = 7;
-            this.check_in.Text = "Check-In";
-            this.check_in.UseVisualStyleBackColor = true;
-            this.check_in.Click += new System.EventHandler(this.check_in_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(25, 288);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.textBox2.Location = new System.Drawing.Point(17, 19);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(211, 26);
-            this.textBox2.TabIndex = 9;
             // 
             // Column1
             // 
@@ -200,17 +157,74 @@
             // 
             this.panel1.Controls.Add(this.search);
             this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(8, 7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(234, 158);
+            this.panel1.Size = new System.Drawing.Size(156, 95);
             this.panel1.TabIndex = 13;
+            // 
+            // search
+            // 
+            this.search.AutoSize = true;
+            this.search.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.Location = new System.Drawing.Point(11, 36);
+            this.search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.search.Name = "search";
+            this.search.Size = new System.Drawing.Size(61, 30);
+            this.search.TabIndex = 11;
+            this.search.Text = "Search";
+            this.search.UseVisualStyleBackColor = true;
+            this.search.Click += new System.EventHandler(this.search_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.textBox2.Location = new System.Drawing.Point(11, 11);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(142, 21);
+            this.textBox2.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 159);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Date Returned";
+            // 
+            // check_in
+            // 
+            this.check_in.AutoSize = true;
+            this.check_in.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_in.Location = new System.Drawing.Point(17, 203);
+            this.check_in.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.check_in.Name = "check_in";
+            this.check_in.Size = new System.Drawing.Size(71, 30);
+            this.check_in.TabIndex = 7;
+            this.check_in.Text = "Check-In";
+            this.check_in.UseVisualStyleBackColor = true;
+            this.check_in.Click += new System.EventHandler(this.check_in_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(17, 173);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(135, 26);
+            this.dateTimePicker1.TabIndex = 8;
             // 
             // Return
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 501);
+            this.ClientSize = new System.Drawing.Size(742, 301);
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Return";
             this.Text = "Return Books";
             this.Load += new System.EventHandler(this.Return_Load);

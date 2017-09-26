@@ -115,8 +115,9 @@ namespace SA45Team3a_LMS
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string name = context.Members.Where(x => x.UserID == currentuser.Userid).First().MemberName.ToString();
-            label9.Text = "WELCOME " + Name;
+            string Name = context.Members.Where(x => x.UserID == currentuser.Userid).First().MemberName.ToString();
+            
+            label9.Text = "Welcome " + Name;
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)

@@ -84,7 +84,6 @@ namespace SA45Team3a_LMS
             Search searchForm = new Search();
             searchForm.Borrow.Visible = false;
             searchForm.Availibility.Visible = false;
-            searchForm.Get.Columns[0].Visible = false;
             searchForm.ShowDialog();
         }
 
